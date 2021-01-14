@@ -36,86 +36,37 @@
 			<a href="https://docs.google.com/spreadsheets/d/1a0563KR2WCuXGEZaVuiWms5B7-QPQuICZU5N3BqGrBM/edit?usp=sharing">Films originaux Netflix</a>
 		</p>
 
-		<div id="viz">
-			<h1 id="pie-chart">Pie Chart</h1>
-			<script>
+		<style>
 
-	            $.getJSON("files/json/country.json", function(json) {
-				    new d3plus.Pie()
-		              .config({
-		                data: json,
-		                groupBy: ["Country"],
-		                value: function(d) {
-		                  return d["Nb_films"];
-		                }
-		              })
-		              .render();
-				});
-	        </script>
+		  #bar {
+		    display: block;
+		    margin: 0 auto 40px;
+		  }
+		</style>
+
+		<div id="viz1">
+			<h1 id="pie-chart">Pie Chart</h1>
+			<iframe src="pie.html" id="bar" width="800" height="400"></iframe>
+			<center>
+	        	<p>Lieux de réalisation des films originaux Netflix</p>	
+	        </center>
 		</div>
 
-		<div id="viz">
+		<div id="viz2">
 			<h1 id="pie-chart">Bar Chart</h1>
-			<script>
+			<iframe src="bar.html" id="bar" width="800" height="400"></iframe>
+			<center>
+	        	<p>Part des langues dans les films originaux Netflix</p>	
+	        </center>
+		</div>
 
-			$.getJSON("files/json/netflix.json", function(myData) {
-
-					  function nombre_occurence(mydata, valeur) {
-			            	var count = 0;
-			            	var obj;
-			            	for (let i = 0; i < mydata.length; i++) {
-			            		obj = mydata[i];
-			            		if (obj["Language"] == valeur) {
-									count++;
-								}
-							}
-							return count;
-			            }
-
-			            function set_cle(mydata) {
-			            	var monSet = new Set();
-			            	var obj;
-			            	for (let i = 0; i < mydata.length; i++) {
-			            		obj = mydata[i];
-
-			            		monSet.add(obj["Language"])
-							}
-							console.log(monSet);
-							return monSet;
-			            }
-
-			            function new_json (mydata) {
-			            	var monSet = set_cle(mydata);
-			            	var tableau = new Array(monSet.size);
-			            	let i = 0;
-			            	monSet.forEach(function(value) {
-							  var group = value;
-							  var occ = nombre_occurence(mydata, value);
-							  var myObject = {
-						          language: group,
-						          nb_film: occ
-								};
-							  tableau[i] = myObject;
-							  i++;
-							});
-							return tableau;
-			            }
-
-			              var json2 = new_json(myData);
-
-			              new d3plus.BarChart()
-						  .config({
-						    data: json2,
-						    groupBy: "language",
-						    x: "language",
-						    y: "nb_film",
-						    legend: true
-						  })
-						  .render();
-			});
-	       
-
-	        </script>
+		<div id="viz3">
+			<h1 id="pie-chart">Horizontal Bar Chart</h1>
+	        <iframe src="pack.html" id="bar" width="800" height="400"></iframe>
+	        <center>
+	        	<p>Nombre de films originaux Netflix réalisés par années</p>	
+	        </center>
+	        
 		</div>
 
 	</body>

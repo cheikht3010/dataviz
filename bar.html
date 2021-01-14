@@ -1,0 +1,88 @@
+
+<!doctype html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>Bar Chart | D3plus</title>
+
+    <script src="https://d3plus.org/js/d3plus-plot.v0.9.full.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <script>
+
+      $.getJSON("files/json/netflix.json", function(myData) {
+
+            function nombre_occurence(mydata, valeur) {
+                    var count = 0;
+                    var obj;
+                    for (let i = 0; i < mydata.length; i++) {
+                      obj = mydata[i];
+                      if (obj["Language"] == valeur) {
+                  count++;
+                }
+              }
+              return count;
+                  }
+
+                  function set_cle(mydata) {
+                    var monSet = new Set();
+                    var obj;
+                    for (let i = 0; i < mydata.length; i++) {
+		                      obj = mydata[i];
+
+		                      monSet.add(obj["Language"])
+		              }
+		              console.log(monSet);
+		              return monSet;
+                  }
+
+                  function new_json (mydata) {
+                    var monSet = set_cle(mydata);
+                    var tableau = new Array(monSet.size);
+                    let i = 0;
+                    monSet.forEach(function(value) {
+		                var group = value;
+		                var occ = nombre_occurence(mydata, value);
+		                var myObject = {
+		                      language: group,
+		                      nb_film: occ
+		                };
+		                tableau[i] = myObject;
+		                i++;
+		              });
+		              return tableau;
+                  }
+
+                    var json2 = new_json(myData);
+
+                    new d3plus.BarChart()
+              .config({
+                data: json2,
+                groupBy: "language",
+                x: "language",
+                y: "nb_film",
+                legend: true
+              })
+              .render();
+      });
+
+    </script>
+
+  </body>
+
+</html>
