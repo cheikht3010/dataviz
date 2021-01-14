@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    	<title>Netflix film originaux</title>
+    	<meta name="description" content="Visualisation des films netflix originaux"/>
+    	<script type="text/javascript" src="https://d3plus.org/js/d3plus-hierarchy.v0.8.full.min.js"></script>
+  		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  	</head>
+
+	<body>
+		<h1>Films originaux Netflix</h1>
+		<p>
+			Netflix est le berceau d'une programmation originale incroyable que vous ne trouverez nulle part ailleurs. Films, émissions de télévision, émissions spéciales et plus, tout est spécialement conçu pour vous.
+		</p>
+		<p>
+			Les productions originales de Netflix comprennent également des suites de séries annulées d'autres réseaux, ainsi que des licences ou des coproductions de contenu de diffuseurs internationaux pour une diffusion exclusive dans d'autres territoires, qui sont également marqués dans ces régions en tant que contenu original de Netflix. Netflix produisait auparavant du contenu via Red Envelope Entertainment. La première série de contenu original de Netflix était House of Cards, sortie en 2013. La société a depuis augmenté son contenu original.
+		</p>
+		<p>
+			L'ensemble de données comprend 523 films originaux avec des attributs tels que le titre, réalisé par, produit par, scénario par, basé sur, mettant en vedette, etc.
+		</p>
+		<p>
+			L'intégration de cet ensemble de données avec d'autres ensembles de données externes tels que les évaluations IMDB, les tomates pourries et les métascores peut également fournir de nombreuses découvertes intéressantes.
+		</p>
+		<h2>Membres de l'équipe</h2>
+		<ul>
+			<li>TOPAN Toe Shamita</li>
+			<li>ZAHER Wassila</li>
+			<li>DIEDHIOU Cheikh Tidiane</li>
+		</ul>
+
+
+		<p>
+			Lien vers le tableau de données :
+			<a href="https://docs.google.com/spreadsheets/d/1a0563KR2WCuXGEZaVuiWms5B7-QPQuICZU5N3BqGrBM/edit?usp=sharing">Films originaux Netflix</a>
+		</p>
+
+		<div id="viz">
+			<h1 id="pie-chart">Pie Chart</h1>
+			<script>
+
+	            $.getJSON("files/json/country.json", function(json) {
+				    console.log(json);
+				    new d3plus.Pie()
+		              .config({
+		                data: json,
+		                groupBy: ["Country"],
+		                value: function(d) {
+		                  return d["Nb_films"];
+		                }
+		              })
+		              .render();
+				});
+
+
+				  
+
+	        </script>
+		</div>
+
+	</body>
+</html>
