@@ -5,6 +5,7 @@
     	<title>Netflix film originaux</title>
     	<meta name="description" content="Visualisation des films netflix originaux"/>
     	<script type="text/javascript" src="https://d3plus.org/js/d3plus-hierarchy.v0.8.full.min.js"></script>
+  		<script src="https://d3plus.org/js/d3plus.v2.0.0-alpha.17.full.min.js"></script>
   		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   	</head>
 
@@ -40,7 +41,6 @@
 			<script>
 
 	            $.getJSON("files/json/country.json", function(json) {
-				    console.log(json);
 				    new d3plus.Pie()
 		              .config({
 		                data: json,
@@ -51,9 +51,69 @@
 		              })
 		              .render();
 				});
+	        </script>
+		</div>
 
+		<div id="viz">
+			<h1 id="pie-chart">Bar Chart</h1>
+			<script>
 
-				  
+			$.getJSON("files/json/netflix.json", function(myData) {
+
+					  function nombre_occurence(mydata, valeur) {
+			            	var count = 0;
+			            	var obj;
+			            	for (let i = 0; i < mydata.length; i++) {
+			            		obj = mydata[i];
+			            		if (obj["Language"] == valeur) {
+									count++;
+								}
+							}
+							return count;
+			            }
+
+			            function set_cle(mydata) {
+			            	var monSet = new Set();
+			            	var obj;
+			            	for (let i = 0; i < mydata.length; i++) {
+			            		obj = mydata[i];
+
+			            		monSet.add(obj["Language"])
+							}
+							console.log(monSet);
+							return monSet;
+			            }
+
+			            function new_json (mydata) {
+			            	var monSet = set_cle(mydata);
+			            	var tableau = new Array(monSet.size);
+			            	let i = 0;
+			            	monSet.forEach(function(value) {
+							  var group = value;
+							  var occ = nombre_occurence(mydata, value);
+							  var myObject = {
+						          language: group,
+						          nb_film: occ
+								};
+							  tableau[i] = myObject;
+							  i++;
+							});
+							return tableau;
+			            }
+
+			              var json2 = new_json(myData);
+
+			              new d3plus.BarChart()
+						  .config({
+						    data: json2,
+						    groupBy: "language",
+						    x: "language",
+						    y: "nb_film",
+						    legend: true
+						  })
+						  .render();
+			});
+	       
 
 	        </script>
 		</div>
