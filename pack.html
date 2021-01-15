@@ -43,8 +43,10 @@
                     var obj;
                     for (let i = 0; i < mydata.length; i++) {
                           obj = mydata[i];
-
-                          monSet.add(obj["Release date"])
+                          if (obj["Release date"] != "") {
+                            monSet.add(obj["Release date"]);
+                          }
+                          
                   }
                   console.log(monSet);
                   return monSet;

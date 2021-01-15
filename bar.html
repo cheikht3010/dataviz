@@ -44,8 +44,9 @@
                     var obj;
                     for (let i = 0; i < mydata.length; i++) {
 		                      obj = mydata[i];
-
-		                      monSet.add(obj["Language"])
+                          if (obj["Language"] != "") {
+                            monSet.add(obj["Language"]);
+                          }
 		              }
 		              console.log(monSet);
 		              return monSet;
