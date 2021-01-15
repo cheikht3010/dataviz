@@ -2,40 +2,15 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-    	<title>Netflix film originaux</title>
+    	<title>Visualisation des données</title>
     	<meta name="description" content="Visualisation des films netflix originaux"/>
     	<script type="text/javascript" src="https://d3plus.org/js/d3plus-hierarchy.v0.8.full.min.js"></script>
   		<script src="https://d3plus.org/js/d3plus.v2.0.0-alpha.17.full.min.js"></script>
   		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   	</head>
 
 	<body>
-		<h1>Films originaux Netflix</h1>
-		<p>
-			Netflix est le berceau d'une programmation originale incroyable que vous ne trouverez nulle part ailleurs. Films, émissions de télévision, émissions spéciales et plus, tout est spécialement conçu pour vous.
-		</p>
-		<p>
-			Les productions originales de Netflix comprennent également des suites de séries annulées d'autres réseaux, ainsi que des licences ou des coproductions de contenu de diffuseurs internationaux pour une diffusion exclusive dans d'autres territoires, qui sont également marqués dans ces régions en tant que contenu original de Netflix. Netflix produisait auparavant du contenu via Red Envelope Entertainment. La première série de contenu original de Netflix était House of Cards, sortie en 2013. La société a depuis augmenté son contenu original.
-		</p>
-		<p>
-			L'ensemble de données comprend 523 films originaux avec des attributs tels que le titre, réalisé par, produit par, scénario par, basé sur, mettant en vedette, etc.
-		</p>
-		<p>
-			L'intégration de cet ensemble de données avec d'autres ensembles de données externes tels que les évaluations IMDB, les tomates pourries et les métascores peut également fournir de nombreuses découvertes intéressantes.
-		</p>
-		<h2>Membres de l'équipe</h2>
-		<ul>
-			<li>TOPAN Toe Shamita</li>
-			<li>ZAHER Wassila</li>
-			<li>DIEDHIOU Cheikh Tidiane</li>
-		</ul>
-
-
-		<p>
-			Lien vers le tableau de données :
-			<a href="https://docs.google.com/spreadsheets/d/1a0563KR2WCuXGEZaVuiWms5B7-QPQuICZU5N3BqGrBM/edit?usp=sharing">Films originaux Netflix</a>
-		</p>
-
 		<style>
 
 		  #bar {
@@ -44,39 +19,85 @@
 		  }
 		</style>
 
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item">
+		        <a class="nav-link" href="presentation.html">Présentation du projet<span class="sr-only">(current)</span></a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="index.html">Visualisation des données</a>
+		      </li>
+		    </ul>
+		  </div>
+		</nav>
+
+
+<div class="container" style="width: 1500px;">
+	<br>
+	<div class="row">
+		<h1>Netflix Original Movies</h1>
+	</div>
+	
+	<br><br>
+	
+	
+	<div>
+		<p>
+			Lien vers le tableau de données :
+			<a href="https://docs.google.com/spreadsheets/d/1a0563KR2WCuXGEZaVuiWms5B7-QPQuICZU5N3BqGrBM/edit?usp=sharing">Films originaux Netflix</a>
+		</p>
+		<br>
+	</div>
+		
 		<div id="viz1">
-			<h1 id="pie-chart">Pie Chart</h1>
+			<h3 id="pie-chart">Pie Chart</h3>
 			<iframe src="pie.html" id="bar" width="800" height="400"></iframe>
 			<center>
 	        	<p>Lieux de réalisation des films originaux Netflix</p>	
 	        </center>
+	        <p>
+	        	Ce diagramme présente les lieux de réalisation des films originaux Netflix. Les États Unis dominent ce classement. Ce qui met en évidence la puissance cinématographique hollywoodienne. Nous remarquons également que Netflix s’étend de plus en plus à l’international ce qui justifie la diversité que l'on retrouve sur la plateforme et aussi son attractivité à travers le monde.
+	        </p>
+	        <br><br>
 		</div>
 
 		<div id="viz2">
-			<h1 id="pie-chart">Bar Chart</h1>
+			<h3 id="pie-chart">Bar Chart</h3>
 			<iframe src="bar.html" id="bar" width="800" height="400"></iframe>
 			<center>
 	        	<p>Part des langues dans les films originaux Netflix</p>	
 	        </center>
+	        <p>
+	        	Ce diagramme de bar illustre la part des langues dans les films originaux Netflix, même si la diversité des langues saute aux yeux, on ne peut pas s’empêcher de remarquer que la popularité des langues comme Anglais, Espagnol influe sur le choix de langue de la plateforme californienne.  Nous remarquons aussi que L’Europe occidentale  est bien représentée notamment avec le Français, l’Allemand et l’Italien.  nous remarquons aussi une corrélation entre les pays où les films sont réalisés et leur langue, par exemple : l’Inde (le deuxième pays après les États-Unis) et la langue Hindi.
+	        </p>
+	        <br><br>
 		</div>
 
 		<div id="viz3">
-			<h1 id="pie-chart">Horizontal Bar Chart</h1>
+			<h3 id="pie-chart">Horizontal Bar Chart</h3>
 	        <iframe src="pack.html" id="bar" width="800" height="400"></iframe>
 	        <center>
 	        	<p>Nombre de films originaux Netflix réalisés par années</p>	
 	        </center>
-	        
+	        <p>
+	        	Horizontal Bar Chart est un graphique qui présente des variables catégorielles avec des barres rectangulaires et horizontales.
+				Dans notre graphique nous représentons l’année à laquelle les films Netflix ont été réalisés. Nous constatons sur ce graphique que l’année où les films ont été majoritairement réalisés est l’année 2020 ensuite vient l’année 2019.
+	        </p>
+	        <br>
 		</div>
 
 		<div id="viz4">
-			<h1 id="pie-chart">Affiches</h1>
-	        <iframe src="affiche.html" id="bar" width="1300" height="750"></iframe>
+			<h3 id="pie-chart">Affiches</h3>
+			<div></div>
+	        <iframe src="affiche.html" id="bar" width="1200" height="760"></iframe>
 	        <center>
-	        	<p>Quelques Affiches de films originaux Netflix</p>	
+	        	<p>Quelques affiches de films originaux Netflix</p>
+	        	<br>
+	        	<p></p>
 	        </center>
 	        
 		</div>
-
+</dir>
 	</body>
 </html>
